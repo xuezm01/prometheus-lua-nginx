@@ -31,6 +31,12 @@ local function parse_fullurl(request_uri)
     if table.getn(parts) == 1 then
        return nil
     end
+    
+    if not parts[1]  then
+        endpoint = "/"
+	    fullurl = "/"
+    end
+    
     for j=1, #parts do
        if(j == 1) then
            endpoint = "/"..parts[j]
