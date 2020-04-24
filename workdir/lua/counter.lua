@@ -69,7 +69,7 @@ function _M.log()
     if result_table == nil then
         return
     end
-    ngx_log(ngx_err,"latency=", tonumber(latency), ",status=", request_status, ",endpoint=", result_table["endpoint"], ",fullurl=", result_table["fullurl"])
+    -- ngx_log(ngx_err,"latency=", tonumber(latency), ",status=", request_status, ",endpoint=", result_table["endpoint"], ",fullurl=", result_table["fullurl"])
     metric_latency:observe(tonumber(latency), {request_host, request_status, request_scheme, request_method, result_table["endpoint"], result_table["fullurl"]})
 end
 return _M
