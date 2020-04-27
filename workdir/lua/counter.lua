@@ -32,9 +32,9 @@ local function parse_fullurl(request_uri)
        return nil
     end
     
-    if not parts[1]  then
-        endpoint = "/"
-	    fullurl = "/"
+    if #parts == 0  then
+	endpoint = "/"
+        fullurl = "/"
     end
     
     for j=1, #parts do
