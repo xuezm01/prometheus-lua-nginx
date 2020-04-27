@@ -36,18 +36,33 @@ local function parse_fullurl(request_uri)
 	endpoint = "/"
         fullurl = "/"
     end
-    
+--     设置全部路径,但是对应的信息会比较多
+--     for j=1, #parts do
+--        if(j == 1) then
+--            endpoint = "/"..parts[j]
+--            fullurl = "/"..parts[j]
+--        else
+--            if tonumber(parts[j]) ~= nil then
+--                break
+--            end
+--            fullurl = fullurl.."/"..parts[j]
+--        end
+--     end
     for j=1, #parts do
        if(j == 1) then
            endpoint = "/"..parts[j]
            fullurl = "/"..parts[j]
-       else
+       elseif(j <= 3) then  -- set /a/b/c  level 3 path
            if tonumber(parts[j]) ~= nil then
                break
            end
            fullurl = fullurl.."/"..parts[j]
+       else
+           break
        end
-    end
+    end	
+	
+
     result_table["endpoint"] = endpoint
     result_table["fullurl"] = fullurl
     return result_table
