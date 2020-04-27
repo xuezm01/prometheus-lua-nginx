@@ -41,13 +41,11 @@ local function parse_fullurl(request_uri)
        if(j == 1) then
            endpoint = "/"..parts[j]
            fullurl = "/"..parts[j]
-       elseif(j <= 5) then
+       else
            if tonumber(parts[j]) ~= nil then
                break
            end
            fullurl = fullurl.."/"..parts[j]
-       else
-           break
        end
     end
     result_table["endpoint"] = endpoint
